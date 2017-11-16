@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>GLPK</title>
+    <style>
+        .main-div{
+            background-color: darkgrey;
+            opacity: 0.9;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);      
+            border: solid #ccc;        
+            border-radius: 16px;
+            border-width: 3px;
+            height: 450px;
+            width: auto;
+            padding: 10px 10px;
+            margin: auto;
+            font-family: cursive, "Lucida Console", Courier, monospace;
+            overflow: auto;
+        }
+
+        input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+
+        .input-horas{
+            background: transparent;
+            width: 6%;
+            -webkit-appearance: none;
+        }
+
+        .btn-submit{
+            border-radius: 8px;
+        }
+
+    </style>
+    <script type="text/javascript">
+        function add(){
+            var n = document.getElementById('NumeroVariaveis').value;
+            var jogadores = document.getElementById('jogadores');
+            var input1 = document.createElement("label");
+            var input2 = document.createElement("label");
+            var input3 = document.createElement("label");
+            var div = document.createElement("div");
+            input1.innerHTML = "O jogador " + ((n/3) + 1) + " possui <input type='number' class='input-horas' name='variaveis" + n + "'> horas de experiência com personagens de Ataque, ";    
+            div.appendChild(input1);
+            n++;
+            input2.innerHTML = "<input type='number' class='input-horas' name='variaveis" + n + "'> horas de experiência com personagens de Defesa e "
+            div.appendChild(input2);
+            n++;
+            input3.innerHTML = "<input type='number' class='input-horas' name='variaveis" + n + "'> horas de experiência com personagens Suporte."
+            div.appendChild(input3);
+            jogadores.appendChild(div);
+            jogadores.appendChild(document.createElement("br"));
+            n++;
+            document.getElementById('NumeroVariaveis').value = n;
+        }
+    </script>
+</head>
+<body background="overwatch-world-cup-sydney-2017-1.webp" style="background-size: auto auto">
+<div class="main-div">
+    <p> Você e seu melhor amigo querem para montar um time de Overwatch para poder participar do campeonato nacional. <br>
+    Para finalizar o time, vocês precisam de alguém para jogar como Ataque, alguém para Defesa e alguém para Suporte.</p>
+    <p> Vocês abriram inscrições para pessoas poderem tentar entrar no time, e agora precisam escolher 3 dentre elas.</p>
+
+    <form action="NewServlet" method="POST">
+        <p> Sabe-se que: </p>
+        <div id="jogadores">
+            <div>
+                <label> O jogador 1 possui <input type="number" class="input-horas" name="variaveis0"> horas de experiência com personagens de Ataque, </label>
+                <label> <input type="number" class="input-horas" name="variaveis1"> horas de experiência com personagens de Defesa e </label>
+                <label> <input type="number" class="input-horas" name="variaveis2"> horas de experiência com personagens Suporte.</label>
+            </div> 
+            
+            <br>
+            
+            <div>
+                <label> O jogador 2 possui <input type="number" class="input-horas" name="variaveis3"> horas de experiência com personagens de Ataque, </label>
+                <label> <input type="number" class="input-horas" name="variaveis4"> horas de experiência com personagens de Defesa e </label>
+                <label> <input type="number" class="input-horas" name="variaveis5"> horas de experiência com personagens Suporte.</label>
+            </div>
+                    
+            <br>
+            
+            <div>
+                <label> O jogador 3 possui <input type="number" class="input-horas" name="variaveis6"> horas de experiência com personagens de Ataque, </label>
+                <label> <input type="number" class="input-horas" name="variaveis7"> horas de experiência com personagens de Defesa e </label>
+                <label> <input type="number" class="input-horas" name="variaveis8"> horas de experiência com personagens Suporte.</label>
+            </div>
+                    
+            <br>
+        </div>
+
+        <br>
+
+        <div style="text-align: center">
+            <input type="hidden" value="9" id="NumeroVariaveis" name="NumeroVariaveis">
+            <input type="button" value="Inscrever mais pessoas" class="btn-submit" onclick="add()">
+            <input type="submit" value="Encontrar solução" class="btn-submit">    
+        </div>
+        
+    </form>
+</div>
+</body>
+</html>
